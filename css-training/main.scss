@@ -1,5 +1,36 @@
-.a {
-  width: 200px;
-  height: 200px;
-  background: blue;
+.container {
+  display: grid;
+  grid-template-rows: 1fr 2fr 4fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  width: 400px;
+  height: 400px;
+  color: white;
+  background: white;
+
+  gap: 10px;
+  & > .header {
+    background: red;
+    grid-column: 1 / -1;
+  }
+
+  & > .small-box {
+    @for $var from 1 to 4 {
+      &-#{$var} {
+        background: red;
+      }
+    }
+  }
+
+  & > .sidebar {
+    background: red;
+    grid-area: 2/4/4/5;
+  }
+  & > .main {
+    background: red;
+    grid-column: 1/4;
+  }
+  & > .footer {
+    background: red;
+    grid-column: 1/-1;
+  }
 }
