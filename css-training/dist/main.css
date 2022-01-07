@@ -1,10 +1,11 @@
 .container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: [head-start] 1fr [head-end box-start] 2fr [box-end main-start] 4fr [main-end foot-start] 1fr [foot-end];
-      grid-template-rows: [head-start] 1fr [head-end box-start] 2fr [box-end main-start] 4fr [main-end foot-start] 1fr [foot-end];
-  -ms-grid-columns: ([col-start] 1fr [col-end])[4];
-      grid-template-columns: repeat(4, [col-start] 1fr [col-end]);
+  -ms-grid-rows: 1fr 2fr 4fr 1fr;
+      grid-template-rows: 1fr 2fr 4fr 1fr;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas: "head head head head" "box1 box2 box3 side" "main main main side" "foot foot foot foot";
   width: 400px;
   height: 400px;
   color: white;
@@ -14,35 +15,53 @@
 
 .container > .header {
   background: red;
-  grid-column: col-start / col-end 4;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-area: head;
 }
 
 .container > .small-box-1 {
   background: red;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: box1;
 }
 
 .container > .small-box-2 {
   background: red;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: box2;
 }
 
 .container > .small-box-3 {
   background: red;
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: box3;
 }
 
 .container > .sidebar {
   background: red;
-  grid-row: box-start/main-end;
-  grid-column: col-start 4 / col-end 4;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 4;
+  grid-area: side;
 }
 
 .container > .main {
   background: red;
+  -ms-grid-row: 3;
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
-  grid-column: 1/4;
+  grid-area: main;
 }
 
 .container > .footer {
   background: red;
-  grid-column: 1/-1;
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-area: foot;
 }
