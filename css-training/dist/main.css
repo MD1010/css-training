@@ -1,10 +1,10 @@
 .container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 1fr 2fr 4fr 1fr;
-      grid-template-rows: 1fr 2fr 4fr 1fr;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: [head-start] 1fr [head-end box-start] 2fr [box-end main-start] 4fr [main-end foot-start] 1fr [foot-end];
+      grid-template-rows: [head-start] 1fr [head-end box-start] 2fr [box-end main-start] 4fr [main-end foot-start] 1fr [foot-end];
+  -ms-grid-columns: ([col-start] 1fr [col-end])[4];
+      grid-template-columns: repeat(4, [col-start] 1fr [col-end]);
   width: 400px;
   height: 400px;
   color: white;
@@ -14,7 +14,7 @@
 
 .container > .header {
   background: red;
-  grid-column: 1 / -1;
+  grid-column: col-start / col-end 4;
 }
 
 .container > .small-box-1 {
@@ -31,11 +31,8 @@
 
 .container > .sidebar {
   background: red;
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 4;
-  -ms-grid-column-span: 1;
-  grid-area: 2/4/4/5;
+  grid-row: box-start/main-end;
+  grid-column: col-start 4 / col-end 4;
 }
 
 .container > .main {

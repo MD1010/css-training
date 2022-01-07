@@ -1,7 +1,7 @@
 .container {
   display: grid;
-  grid-template-rows: 1fr 2fr 4fr 1fr;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: [head-start] 1fr [head-end box-start] 2fr [box-end main-start] 4fr [main-end foot-start] 1fr[foot-end];
+  grid-template-columns: repeat(4, [col-start] 1fr [col-end]);
   width: 400px;
   height: 400px;
   color: white;
@@ -10,7 +10,7 @@
   gap: 10px;
   & > .header {
     background: red;
-    grid-column: 1 / -1;
+    grid-column: col-start / col-end 4;
   }
 
   & > .small-box {
@@ -23,7 +23,9 @@
 
   & > .sidebar {
     background: red;
-    grid-area: 2/4/4/5;
+    // grid-area: box-start/main-end/(col-start 4) / (col-end 4);
+    grid-row: box-start/main-end;
+    grid-column: col-start 4 / col-end 4;
   }
   & > .main {
     background: red;
