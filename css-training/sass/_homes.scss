@@ -67,7 +67,7 @@
 
     font-size: 1.5rem;
     margin-left: 2rem;
-
+    font-weight: bold;
     svg {
       @include icon(2rem, $color-primary);
       margin-right: 1rem;
